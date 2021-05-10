@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col">
+    <div class="content">    
+      <div fxLayout="row wrap">
+          <div fxFlex="25%"  *ngFor="let p of productos; index as i;">
+              <mat-card class="example-card" >
+                  <mat-card-header>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>{{p.nombre}}</mat-card-title>
+                  </mat-card-header>
+                  <img mat-card-image [src]="p.imagen">
+                  <mat-card-content>
+                      <p>
+                          {{p.descripcion}}
+                      </p>
+                      <h2 class="costo"><b>${{p.costo | number}}</b></h2>
+                  </mat-card-content>
+                  <mat-card-actions>
+                      <div class="example-button-container" align="end">
+                          <button mat-fab color="primary" (click)="agregar(p)" >
+                          <mat-icon>shopping_cart</mat-icon>
+                          </button>
+                      </div>
+                  </mat-card-actions>
+              </mat-card>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="col">
+    <div class="mat-elevation-z8">
+      <table multiTemplateDataRows>
+        <tr>
+          <th class="titulos">Cantidad</th>
+          <th class="titulos">Producto</th>
+          <th class="titulos">Costo</th>
+        </tr>
+        <tr *ngFor="let p of produ">
+          <th>{{p.cantidad}}</th>
+          <th>{{p.nombre}}</th>
+          <th>${{p.costo | number}}</th>
+        </tr>
+      
+      </table>
+    </div>
+    <hr>
+    <br>
+    <br>
+    <label>Total: ${{acum | number}}</label>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Monto</mat-label>
+        <input type="number" matInput placeholder="Ingrese el monto"  [(ngModel)]="monto" name="monto">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" (click)="comprar()" [disabled]="monto >= acum ? false : true">Aceptar</button>
+    </form>
+    <br>
+    <br>
+    <label *ngIf="mostrar" >Cambio: ${{cambio | number}}</label>
+    <br>
+    <button mat-raised-button color="primary" (click)="nuevaVenta()" *ngIf="mostrar" >Nueva venta</button>
+
+    <br>
+    <br>
+    <label *ngIf="mostrar" >{{mensaje}}</label>
+    <br>
+</div>
+</div>

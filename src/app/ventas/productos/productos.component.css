@@ -1,0 +1,28 @@
+
+
+  .costo {
+      color: green;
+  }
+
+  img{
+      height: 200px;
+      width: 250;
+  }
+  mat-card-content{
+      height: 100px;
+      
+  }
+
+  .content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    width: 200px;
+}
+
+mat-card{
+    
+    margin-right: 20px;
+}
+
